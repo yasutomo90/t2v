@@ -46,6 +46,3 @@ def text_to_speech(texts, speaker=8, max_retry=20):
             play_obj.wait_done()
         wave_obj=simpleaudio.WaveObject(voice_data,1,2,24000)
         play_obj=wave_obj.play()
-
-# if __name__ == "__main__": 
-#     text_to_speech("てすと")
