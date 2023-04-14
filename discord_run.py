@@ -1,3 +1,5 @@
+import discord
+from create_voice import text_to_speech
 import os
 from dotenv import load_dotenv
 
@@ -18,3 +20,15 @@ def discord_token():
                 f.write(f"discord_token={discord_token}\n")
 
     return discord_token
+
+def discord_run():
+    intents = discord.Intents.default()
+    intents.message_content = True
+    client = discord.Client(intents=intents)
+
+    @client.eventpy
+    async def on_message(message):
+        print(message.content)
+        text_to_speech(message.content)
+
+    client.run(discord_token())
